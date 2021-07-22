@@ -3,6 +3,7 @@ node{
         git 'https://github.com/jbla9028/my-app.git'
     }
     stage('Compile Package'){
-        sh 'mvn package'
+        def mvnHome = tool name: 'maven-3', type: 'maven'
+        sh "${mvnHome}}/opt/apache-maven-3.8.1/mvn package"
     }
 }
