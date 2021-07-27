@@ -15,7 +15,7 @@ node{
     stage('load Vars'){
         path = 'vars.txt'
         loadEnvironmentVariables(path)
-        def result = sh(script: 'echo $vars1', returnStdout: true)
+        def result = sh(script: 'echo $vars1 $vars2', returnStdout: true)
                 echo result
         
     }
