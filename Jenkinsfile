@@ -15,8 +15,8 @@ node{
     stage('load Vars'){
         path = 'vars.txt'
         loadEnvironmentVariables(path)
-        echo $var1
-        echo $var2
+        def result = sh(script: 'echo $vars1', returnStdout: true)
+                echo result
         
     }
     stage('Email Notification'){
