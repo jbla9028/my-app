@@ -1,3 +1,14 @@
+def loadProperties(path) {
+    properties = new Properties()
+    File propertiesFile = new File(path)
+    properties.load(propertiesFile.newDataInputStream())
+    Set<Object> keys = properties.keySet();
+    for(Object k:keys){
+    String key = (String)k;
+    String value =(String) properties.getProperty(key)
+    env."${key}" = "${value}"
+    }
+}
 
 
 node{
@@ -10,14 +21,3 @@ node{
 }
 
 
-def loadProperties(path) {
-    properties = new Properties()
-    File propertiesFile = new File(path)
-    properties.load(propertiesFile.newDataInputStream())
-    Set<Object> keys = properties.keySet();
-    for(Object k:keys){
-    String key = (String)k;
-    String value =(String) properties.getProperty(key)
-    env."${key}" = "${value}"
-    }
-}
