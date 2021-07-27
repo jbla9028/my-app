@@ -5,7 +5,7 @@ node{
         git 'https://github.com/jbla9028/my-app.git'
     }
     stage('Read Variable File'){
-        def loadProperties(vars.txt) {
+        def loadProperties('vars.txt') {
         properties = new Properties()
         File propertiesFile = new File(path)
         properties.load(propertiesFile.newDataInputStream())
