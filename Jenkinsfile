@@ -17,7 +17,7 @@ node{
     }
     stage('load Vars'){
         path = 'vars.txt'
-        loadEnvironmentVariables(path)
+        loadProperties(path)
     }
     stage('Email Notification'){
         mail bcc: '', body: 'the build was a success', cc: '', from: '', replyTo: '', subject: 'build successful', to: 'jeffreyjblanchard@gmail.com'
