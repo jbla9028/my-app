@@ -17,6 +17,7 @@ node{
         loadEnvironmentVariables(path)
         def result = sh(script: 'echo $vars1 $vars2', returnStdout: true)
                 echo result
+        sh 'terraform -v'
         
     }
     stage('Compile Package'){
