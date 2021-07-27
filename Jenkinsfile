@@ -5,7 +5,6 @@ node{
         git 'https://github.com/jbla9028/my-app.git'
     }
     stage('Read Variable File'){
-        def path = "${workspace}/vars.txt"
         def loadProperties(path) {
         properties = new Properties()
         File propertiesFile = new File(path)
@@ -15,8 +14,8 @@ node{
         String key = (String)k;
         String value =(String) properties.getProperty(key)
         env."${key}" = "${value}"
+        }
     }
-}
     }
     stage('Email Notification'){
         mail bcc: '', body: 'the build was a success', cc: '', from: '', replyTo: '', subject: 'build successful', to: 'jeffreyjblanchard@gmail.com'
