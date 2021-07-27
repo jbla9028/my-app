@@ -1,14 +1,11 @@
-def loadProperties(path) {
-    properties = new Properties()
-    File propertiesFile = new File(path)
-    properties.load(propertiesFile.newDataInputStream())
-    Set<Object> keys = properties.keySet();
-    for(Object k:keys){
-    String key = (String)k;
-    String value =(String) properties.getProperty(key)
-    env."${key}" = "${value}"
+def loadEnvironmentVariables(path){
+    def props = readProperties  file: path
+    keys= props.keySet()
+    for(key in keys) {
+        value = props["${key}"]
+        env."${key}" = "${value}"
     }
-}
+} 
 
 
 node{
@@ -17,7 +14,7 @@ node{
     }
     stage('load Vars'){
         path = 'vars.txt'
-        loadProperties(path)
+        loadEnvironmentVariables(path)
     }
     stage('Email Notification'){
         mail bcc: '', body: 'the build was a success', cc: '', from: '', replyTo: '', subject: 'build successful', to: 'jeffreyjblanchard@gmail.com'
